@@ -2,6 +2,8 @@
 apt update
 apt install -y iptables
 snap install docker
+groupadd docker
+#gpasswd -a Administrador docker
 useradd -s /bin/bash -m -G docker examen
 echo examen:examen | chpasswd
 su examen -c 'git clone https://github.com/sciscar/bd_examen.git && cd bd_examen && docker-compose up -d'
