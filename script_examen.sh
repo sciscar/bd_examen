@@ -3,8 +3,8 @@ apt update
 apt install -y iptables
 snap install docker
 groupadd docker
-#gpasswd -a Administrador docker
-useradd -s /bin/bash -m -G docker examen
+useradd -s /bin/bash -m examen
+gpasswd -a examen docker
 echo examen:examen | chpasswd
 su examen -c 'git clone https://github.com/sciscar/bd_examen.git && cd bd_examen && docker-compose up -d'
 #sh -c 'echo " pre-up iptables -A OUTPUT -p tcp -m owner --uid-owner examen -j DROP" >> /etc/network/interfaces'
