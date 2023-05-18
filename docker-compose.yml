@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root_pass
     ports:
-      - 3307:3306
+      - 3306:3306
     volumes:
       - mariadb:/var/lib/mysql
       - ./tattoo.sql:/docker-entrypoint-initdb.d/tattoo.sql
@@ -22,7 +22,7 @@ services:
       PMA_ARBITRARY: 1
     restart: always
     ports:
-      - 8089:80
+      - 8080:80
       
   mysql-workbench:
     image: lscr.io/linuxserver/mysql-workbench:latest
@@ -31,7 +31,7 @@ services:
     security_opt :
       - seccomp:unconfined
     ports:
-      - 3001:3000
+      - 3000:3000
     cap_add:
       - IPC_LOCK
     restart: unless-stopped
@@ -55,13 +55,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./portainer_data:/data
     ports:
-      - 9001:9000
+      - 9000:9000
 
   nginx:
     build: nginx
     restart: always
     ports:
-      - 8081:80
+      - 80:80
    
 volumes:
   mariadb:
