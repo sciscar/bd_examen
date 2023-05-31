@@ -6,6 +6,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_pass
+    security_opt :
+      - seccomp:unconfined
     ports:
       - 3306:3306
     volumes:
